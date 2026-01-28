@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Echo Chamber - Magical Number Puzzle</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🔮 The Chamber of Echoes</h1>
+            <p class="subtitle">Predict the next number in magical sequences</p>
+        </header>
+
+        <!-- Story Section -->
+        <section class="story-section">
+            <div class="story-content">
+                <h2>📖 The Legend</h2>
+                <p>You enter a mystical chamber where magical numbers resonate through the air. Each number is an echo of the one before it, following a hidden pattern. Your task is to understand the pattern and predict the next echo. Can you hear the rhythm of the numbers?</p>
+            </div>
+        </section>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Input Section -->
+            <section class="input-section">
+                <div class="input-card">
+                    <h2>🎯 Test Your Sequence</h2>
+                    <p class="help-text">Enter numbers separated by commas (e.g., 3, 6, 9, 12)</p>
+                    
+                    <div class="input-group">
+                        <input 
+                            type="text" 
+                            id="sequenceInput" 
+                            class="sequence-input" 
+                            placeholder="3, 6, 9, 12"
+                            autocomplete="off"
+                        >
+                        <button id="testBtn" class="btn btn-primary">Test Sequence</button>
+                    </div>
+
+                    <!-- Quick Examples -->
+                    <div class="quick-examples">
+                        <p class="examples-label">Quick Examples:</p>
+                        <div class="examples-grid">
+                            <button class="example-btn" onclick="setExample('2, 4, 6, 8')">2, 4, 6, 8</button>
+                            <button class="example-btn" onclick="setExample('10, 7, 4, 1')">10, 7, 4, 1</button>
+                            <button class="example-btn" onclick="setExample('100, 150, 200')">100, 150, 200</button>
+                            <button class="example-btn" onclick="setExample('5, 5, 5, 5')">5, 5, 5, 5</button>
+                        </div>
+                    </div>
+
+                    <!-- Result Area -->
+                    <div id="resultArea" class="result-area hidden">
+                        <div id="resultContent" class="result-content"></div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Stats Section -->
+            <section class="stats-section">
+                <div class="stats-card">
+                    <h3>📊 Chamber Statistics</h3>
+                    <div class="stats-grid">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Echoes</span>
+                            <span id="totalEchoes" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Successful</span>
+                            <span id="successfulEchoes" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Failed</span>
+                            <span id="failedEchoes" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Success Rate</span>
+                            <span id="successRate" class="stat-value">0%</span>
+                        </div>
+                    </div>
+                    <button id="clearMemoriesBtn" class="btn btn-secondary btn-small">Clear Memories</button>
+                </div>
+            </section>
+
+            <!-- Memories Section -->
+            <section class="memories-section">
+                <div class="memories-card">
+                    <h3>💾 Chamber Memories</h3>
+                    <div id="memoriesList" class="memories-list">
+                        <p class="empty-message">No echoes recorded yet. Test a sequence to begin!</p>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>✨ Echo Chamber v1.1.0 | Magical Number Sequence Prediction Puzzle ✨</p>
+        </footer>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

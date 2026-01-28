@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🔮 Echo Chamber Advanced - Magical Pattern Recognition</title>
+    <link rel="stylesheet" href="styles-advanced.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+</head>
+<body>
+    <div class="background"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header class="header">
+            <h1>🏰 Echo Castle - Advanced Pattern Recognition</h1>
+            <p class="subtitle">Uncover the secrets of mystical number patterns</p>
+        </header>
+
+        <!-- Navigation Tabs -->
+        <nav class="nav-tabs">
+            <button class="nav-tab active" data-tab="analyzer">🎯 Analyzer</button>
+            <button class="nav-tab" data-tab="gallery">📊 Gallery</button>
+            <button class="nav-tab" data-tab="analytics">📈 Analytics</button>
+            <button class="nav-tab" data-tab="settings">⚙️ Settings</button>
+        </nav>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- TAB 1: ANALYZER -->
+            <section id="analyzer-tab" class="tab-content active">
+                <div class="analyzer-grid">
+                    <!-- Input Section -->
+                    <section class="card input-card">
+                        <h2>🎯 Sequence Analyzer</h2>
+                        <p class="help-text">Enter numbers to detect pattern and predict the next value</p>
+                        
+                        <div class="input-group">
+                            <input 
+                                type="text" 
+                                id="sequenceInput" 
+                                class="sequence-input" 
+                                placeholder="2, 4, 6, 8, 10"
+                                autocomplete="off"
+                            >
+                            <button id="testBtn" class="btn btn-primary">✨ Analyze</button>
+                        </div>
+
+                        <!-- Quick Examples -->
+                        <div class="quick-examples">
+                            <p class="examples-label">📚 Pattern Examples:</p>
+                            <div class="examples-grid">
+                                <button class="example-btn" data-example="2, 4, 6, 8" title="Arithmetic">2, 4, 6, 8</button>
+                                <button class="example-btn" data-example="2, 6, 18, 54" title="Geometric">2, 6, 18, 54</button>
+                                <button class="example-btn" data-example="1, 1, 2, 3, 5" title="Fibonacci">1, 1, 2, 3, 5</button>
+                                <button class="example-btn" data-example="1, 4, 9, 16" title="Quadratic">1, 4, 9, 16</button>
+                                <button class="example-btn" data-example="100, 50, 25, 12.5" title="Geometric (0.5)">100, 50, 25, 12.5</button>
+                                <button class="example-btn" data-example="10, 7, 4, 1" title="Arithmetic (neg)">10, 7, 4, 1</button>
+                            </div>
+                        </div>
+
+                        <!-- Batch Testing -->
+                        <details class="batch-section">
+                            <summary>🔄 Batch Testing</summary>
+                            <div class="batch-content">
+                                <textarea 
+                                    id="batchInput" 
+                                    class="batch-input" 
+                                    placeholder="Enter sequences, one per line&#10;1, 2, 3, 4&#10;2, 4, 8, 16"
+                                ></textarea>
+                                <button id="batchBtn" class="btn btn-secondary">Test Batch</button>
+                            </div>
+                        </details>
+                    </section>
+
+                    <!-- Results Section -->
+                    <section class="card results-card">
+                        <h2>✨ Results</h2>
+                        <div id="resultsContainer" class="results-container">
+                            <p class="placeholder">Enter a sequence to analyze...</p>
+                        </div>
+                    </section>
+                </div>
+
+                <!-- Pattern Analysis Chart -->
+                <section class="card">
+                    <h2>📊 Sequence Visualization</h2>
+                    <div class="chart-container">
+                        <canvas id="sequenceChart"></canvas>
+                    </div>
+                </section>
+            </section>
+
+            <!-- TAB 2: GALLERY -->
+            <section id="gallery-tab" class="tab-content">
+                <div class="gallery-grid">
+                    <!-- Memory History -->
+                    <section class="card memories-card">
+                        <h2>🗂️ Memory Gallery</h2>
+                        <div class="controls">
+                            <select id="filterType" class="filter-select">
+                                <option value="">All Patterns</option>
+                                <option value="arithmetic">Arithmetic</option>
+                                <option value="geometric">Geometric</option>
+                                <option value="fibonacci">Fibonacci</option>
+                                <option value="polynomial">Polynomial</option>
+                                <option value="quadratic">Quadratic</option>
+                            </select>
+                            <button id="clearMemBtn" class="btn btn-danger">Clear All</button>
+                        </div>
+                        <div id="memoriesList" class="memories-list">
+                            <p class="placeholder">No sequences tested yet...</p>
+                        </div>
+                    </section>
+
+                    <!-- Pattern Distribution -->
+                    <section class="card">
+                        <h2>🎨 Pattern Distribution</h2>
+                        <div class="chart-container">
+                            <canvas id="distributionChart"></canvas>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- TAB 3: ANALYTICS -->
+            <section id="analytics-tab" class="tab-content">
+                <div class="analytics-grid">
+                    <!-- Statistics Cards -->
+                    <div class="stats-container">
+                        <div class="stat-card">
+                            <h3>Total Tests</h3>
+                            <p id="statTotal" class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Successful</h3>
+                            <p id="statSuccess" class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Failed</h3>
+                            <p id="statFailed" class="stat-value">0</p>
+                        </div>
+                        <div class="stat-card">
+                            <h3>Success Rate</h3>
+                            <p id="statRate" class="stat-value">0%</p>
+                        </div>
+                    </div>
+
+                    <!-- Success Timeline -->
+                    <section class="card">
+                        <h2>📈 Success Timeline</h2>
+                        <div class="chart-container">
+                            <canvas id="timelineChart"></canvas>
+                        </div>
+                    </section>
+
+                    <!-- Confidence Scores -->
+                    <section class="card">
+                        <h2>🎯 Confidence Scores</h2>
+                        <div class="chart-container">
+                            <canvas id="confidenceChart"></canvas>
+                        </div>
+                    </section>
+
+                    <!-- Export Options -->
+                    <section class="card">
+                        <h2>💾 Data Export</h2>
+                        <div class="export-buttons">
+                            <button id="exportJsonBtn" class="btn btn-secondary">📥 Export JSON</button>
+                            <button id="exportCsvBtn" class="btn btn-secondary">📋 Export CSV</button>
+                            <button id="exportStatsBtn" class="btn btn-secondary">📊 Export Stats</button>
+                        </div>
+                    </section>
+                </div>
+            </section>
+
+            <!-- TAB 4: SETTINGS -->
+            <section id="settings-tab" class="tab-content">
+                <div class="settings-grid">
+                    <section class="card">
+                        <h2>⚙️ Application Settings</h2>
+                        
+                        <div class="setting-group">
+                            <label for="autoVisualize">
+                                <input type="checkbox" id="autoVisualize" checked>
+                                Auto-visualize sequences
+                            </label>
+                        </div>
+
+                        <div class="setting-group">
+                            <label for="showFormulas">
+                                <input type="checkbox" id="showFormulas" checked>
+                                Show mathematical formulas
+                            </label>
+                        </div>
+
+                        <div class="setting-group">
+                            <label for="groupByType">
+                                <input type="checkbox" id="groupByType" checked>
+                                Group memories by pattern type
+                            </label>
+                        </div>
+
+                        <div class="setting-group">
+                            <label for="darkMode">
+                                <input type="checkbox" id="darkMode" checked>
+                                Dark mode
+                            </label>
+                        </div>
+
+                        <div class="setting-group">
+                            <label for="animationsEnabled">
+                                <input type="checkbox" id="animationsEnabled" checked>
+                                Enable animations
+                            </label>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <h2>ℹ️ About</h2>
+                        <div class="about-content">
+                            <h3>Echo Chamber Advanced v2.0</h3>
+                            <p>Advanced pattern recognition system with support for:</p>
+                            <ul>
+                                <li>✓ Arithmetic Progressions</li>
+                                <li>✓ Geometric Progressions</li>
+                                <li>✓ Fibonacci-like Sequences</li>
+                                <li>✓ Polynomial Sequences</li>
+                                <li>✓ Quadratic Sequences</li>
+                            </ul>
+                            <p><strong>Features:</strong></p>
+                            <ul>
+                                <li>Real-time pattern detection</li>
+                                <li>Interactive visualizations</li>
+                                <li>Historical tracking</li>
+                                <li>Performance optimization</li>
+                                <li>Data export capabilities</li>
+                            </ul>
+                        </div>
+                    </section>
+
+                    <section class="card">
+                        <h2>🔧 Developer Tools</h2>
+                        <button id="consoleBtn" class="btn btn-secondary">Open Console</button>
+                        <button id="healthCheckBtn" class="btn btn-secondary">Health Check</button>
+                        <button id="apiDocsBtn" class="btn btn-secondary">API Documentation</button>
+                    </section>
+                </div>
+            </section>
+        </main>
+
+        <!-- Error/Status Bar -->
+        <div id="statusBar" class="status-bar"></div>
+    </div>
+
+    <script src="app-advanced.js"></script>
+</body>
+</html>
